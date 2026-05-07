@@ -2,8 +2,6 @@
 
 Automated daily digest of news on **trustworthy AI**, **responsible AI**, **AI privacy**, and **machine unlearning**, pulled from WSJ, Bloomberg, The Markup, TechCrunch, and 보안뉴스 (Boannews).
 
-> **신뢰 가능한 AI / 책임 있는 AI / AI 프라이버시 / 머신 언러닝** 관련 뉴스를 매일 아침 10시(KST)에 자동 수집·요약·분류해서 전달해 주는 도구입니다.
-
 Runs every day at 10:00 KST. Window: yesterday 10:00 → today 10:00 KST.
 
 ## What it actually does
