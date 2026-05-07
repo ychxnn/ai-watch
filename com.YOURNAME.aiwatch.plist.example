@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample LaunchAgent plist for AI Watch (macOS).
+
+  주석: 사용 방법
+  1. 이 파일을 ~/Library/LaunchAgents/com.YOURNAME.aiwatch.plist 로 복사
+  2. 아래 6곳의 경로/이름을 본인 환경에 맞게 수정
+  3. launchctl load ~/Library/LaunchAgents/com.YOURNAME.aiwatch.plist 로 등록
+
+  USAGE:
+  1. Copy this file to ~/Library/LaunchAgents/com.YOURNAME.aiwatch.plist
+  2. Replace the 6 placeholders below with your own paths/name
+  3. Load with: launchctl load ~/Library/LaunchAgents/com.YOURNAME.aiwatch.plist
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <!-- 주석 ① YOURNAME을 본인이 원하는 이름으로 변경 (e.g. com.alice.aiwatch) -->
+    <string>com.YOURNAME.aiwatch</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <!-- 주석 ② 본인 가상환경 Python 절대 경로 (Change to your venv Python absolute path) -->
+        <string>/Users/YOURNAME/ai-watch/.venv/bin/python</string>
+        <!-- 주석 ③ main.py 절대 경로 (Change to absolute path of main.py) -->
+        <string>/Users/YOURNAME/ai-watch/main.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <!-- 주석 ④ 프로젝트 디렉토리 절대 경로 (Project directory absolute path) -->
+    <string>/Users/YOURNAME/ai-watch</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <!-- 주석: 매일 10:00 KST에 실행. 시간 변경시 Hour/Minute 값 수정 -->
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <!-- 주석 ⑤ 로그 파일 경로 (Log file path) -->
+    <string>/Users/YOURNAME/ai-watch/launchd.log</string>
+
+    <key>StandardErrorPath</key>
+    <!-- 주석 ⑥ 에러 로그 파일 경로 (Error log file path) -->
+    <string>/Users/YOURNAME/ai-watch/launchd.error.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

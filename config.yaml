@@ -1,0 +1,64 @@
+# AI Watch — sources & delivery config
+# 주석: RSS 피드 URL이 변경되면 여기를 업데이트하세요
+# NOTE: edit feed URLs if a source moves them. Add new sources by appending to the list.
+
+sources:
+  # ── The Markup ───────────────────────────────────────────────────────
+  # Open access. Strong investigative reporting on algorithms & privacy.
+  - name: "The Markup"
+    paywalled: false
+    feeds:
+      - "https://themarkup.org/feeds/rss.xml"
+
+  # ── TechCrunch ───────────────────────────────────────────────────────
+  # Open. AI category feed cuts most non-AI noise upfront.
+  - name: "TechCrunch"
+    paywalled: false
+    feeds:
+      - "https://techcrunch.com/category/artificial-intelligence/feed/"
+      - "https://techcrunch.com/category/privacy/feed/"
+
+  # ── 보안뉴스 (Boannews) ──────────────────────────────────────────────
+  # Korean security news. Strong on AI-driven privacy/security incidents.
+  - name: "보안뉴스"
+    paywalled: false
+    feeds:
+      - "https://www.boannews.com/media/news_rss.xml"
+
+  # ── WSJ ──────────────────────────────────────────────────────────────
+  # Paywalled — RSS gives headline + ~1-2 sentences. Used for triage.
+  - name: "WSJ"
+    paywalled: true
+    feeds:
+      - "https://feeds.a.dj.com/rss/RSSWSJD.xml"          # Tech
+      - "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml" # US Business
+
+  # ── Bloomberg ────────────────────────────────────────────────────────
+  # Bloomberg killed most public RSS. Workaround: Google News scoped.
+  - name: "Bloomberg"
+    paywalled: true
+    feeds:
+      - "https://news.google.com/rss/search?q=site:bloomberg.com+(AI+OR+%22artificial+intelligence%22+OR+privacy+OR+regulation)&hl=en-US&gl=US&ceid=US:en"
+
+# ── Delivery ───────────────────────────────────────────────────────────
+# Files are always written to ./digests/YYYY-MM-DD.md regardless of flags.
+# 주석: 다이제스트 파일은 위 플래그와 무관하게 항상 ./digests/YYYY-MM-DD.md에 저장됩니다.
+
+email:
+  # 주석: 이메일 발송이 필요하면 true로 변경하고 .env에 SMTP 정보를 입력하세요
+  # NOTE: set true and fill SMTP credentials in .env to enable email delivery
+  enabled: false
+  to: "your-email@example.com"          # 주석: 받는 사람 이메일 주소로 변경 (change to your address)
+  from: "ai-watch@example.com"          # 주석: 보내는 사람 이메일 (보통 SMTP_USER와 동일 / usually same as SMTP_USER)
+
+slack:
+  # 주석: Slack 알림이 필요하면 true로 변경하고 SLACK_WEBHOOK_URL 환경변수를 설정하세요
+  # NOTE: set true and provide SLACK_WEBHOOK_URL env var to enable Slack delivery
+  enabled: false
+
+mac_notification:
+  # 주석: macOS 알림 배너 표시 (기본 활성화). launchd 환경에서 안정적으로 작동하려면
+  # `brew install terminal-notifier` 실행을 권장합니다.
+  # NOTE: macOS notification banner (default on). For reliable delivery from launchd,
+  # install terminal-notifier: `brew install terminal-notifier`
+  enabled: true
