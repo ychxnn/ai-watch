@@ -21,8 +21,8 @@ WSJ + Bloomberg are paywalled — the script doesn't try to bypass that. They're
 ## Output format
 
 Each digest is `digests/YYYY-MM-DD.md`:
+<hr>
 
-```
 # AI Watch — Daily Digest
 **Window:** 2026-05-06 10:00 KST → 2026-05-07 10:00 KST
 **Generated:** 2026-05-07 10:00:23 KST
@@ -44,7 +44,8 @@ _Source · timestamp · importance 5/5 · category_
 
 ## 🔒 Paywalled Headlines
 - **[WSJ]** Title (link) — RSS blurb
-```
+
+</hr>
 
 ## Setup
 
