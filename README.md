@@ -66,8 +66,6 @@ pip install lxml_html_clean
 
 Free tier — no credit card needed. Get a key at [aistudio.google.com/apikey](https://aistudio.google.com/apikey). Click "Create API key" → "Create API key in new project."
 
-> 주석: 본인 Google 계정에 청구 정보가 연결되어 있다면 무료 한도가 활성화되지 않을 수 있습니다. 이 경우 새로운 Google 계정으로 다시 시도하거나, 다른 LLM 제공자(Groq 등)로 교체하세요.
-
 ### 3. Create `.env`
 
 ```bash
@@ -83,7 +81,6 @@ GEMINI_API_KEY=your-gemini-api-key-here
 
 If you also want email delivery (optional), add SMTP credentials. Otherwise leave them blank and set `email.enabled: false` in `config.yaml`.
 
-> 주석: Gmail로 보내려면 일반 비밀번호가 아닌 [앱 비밀번호](https://myaccount.google.com/apppasswords)를 발급받아야 합니다 (2단계 인증 필수).
 
 ### 4. Edit `config.yaml`
 
@@ -111,14 +108,14 @@ Create `~/Library/LaunchAgents/com.YOURNAME.aiwatch.plist`:
 
     <key>ProgramArguments</key>
     <array>
-        <!-- 주석: 본인 가상환경 Python 경로로 변경 (Change to your venv Python path) -->
+        <!-- Change to your venv Python path -->
         <string>/path/to/your/ai-watch/.venv/bin/python</string>
-        <!-- 주석: 본인 main.py 절대 경로로 변경 (Change to absolute path of your main.py) -->
+        <!-- Change to absolute path of your main.py -->
         <string>/path/to/your/ai-watch/main.py</string>
     </array>
 
     <key>WorkingDirectory</key>
-    <!-- 주석: 본인 프로젝트 디렉토리 절대 경로 (Absolute path to your project directory) -->
+    <!--Absolute path to your project directory -->
     <string>/path/to/your/ai-watch</string>
 
     <key>StartCalendarInterval</key>
@@ -159,8 +156,6 @@ Test by triggering immediately:
 launchctl start com.YOURNAME.aiwatch
 ```
 
-> 주석: macOS는 기본적으로 일정 시간 후 잠자기 모드로 들어갑니다. 10시에 launchd가 정상 작동하려면 절전 설정을 끄세요: `sudo pmset -a sleep 0`
-
 ### 7. (Optional) macOS notifications when the digest is ready
 
 If you want a banner notification when each run finishes, install:
@@ -179,12 +174,6 @@ Same Python setup. For scheduling, use cron instead of launchd:
 crontab -e
 ```
 
-Add:
-
-```
-# 주석: 시간대 확인: KST 서버라면 0 10, UTC 서버라면 0 1
-0 1 * * * cd /path/to/your/ai-watch && /path/to/your/ai-watch/.venv/bin/python main.py >> /path/to/your/ai-watch/cron.log 2>&1
-```
 
 ## Tuning quality
 
@@ -201,7 +190,6 @@ The prompts in `main.py` are where quality lives.
 
 Free tier limits on `gemini-2.5-flash` are around 10 req/min and ~250 req/day, well within what one daily run uses (~30-60 calls).
 
-> 주석: 무료 한도는 Google 정책에 따라 변경될 수 있습니다. 한도 초과 시 다른 모델(`gemini-2.5-flash`, `gemini-2.5-flash-lite`)로 전환하거나, 키워드 필터를 더 엄격하게 만들어 호출 수를 줄이세요.
 
 ## Worth adding later
 
